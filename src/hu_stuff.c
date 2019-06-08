@@ -788,6 +788,8 @@ static void Got_Saycmd(UINT8 **p, INT32 playernum)
 				case SKINCOLOR_WHITE:
 				case SKINCOLOR_SILVER:
 				case SKINCOLOR_SLATE:
+                                case SKINCOLOR_STEAMPUNK:
+                                case SKINCOLOR_GHOST:
 					cstart = "\x80"; // White
 					break;
 				case SKINCOLOR_GREY:
@@ -795,6 +797,12 @@ static void Got_Saycmd(UINT8 **p, INT32 playernum)
 				case SKINCOLOR_BLACK:
 				case SKINCOLOR_SKUNK:
 				case SKINCOLOR_JET:
+                                case SKINCOLOR_CHARCOAL:
+                                case SKINCOLOR_RAVEN:
+                                case SKINCOLOR_ONYX:
+                                case SKINCOLOR_INKBLOT:
+                                case SKINCOLOR_CROW:
+                                case SKINCOLOR_DOOM:
 					cstart = "\x86"; // V_GRAYMAP
 					break;
 				case SKINCOLOR_SEPIA:
@@ -804,6 +812,9 @@ static void Got_Saycmd(UINT8 **p, INT32 playernum)
 				case SKINCOLOR_LEATHER:
 				case SKINCOLOR_RUST:
 				case SKINCOLOR_WRISTWATCH:
+                                case SKINCOLOR_MUD:
+                                case SKINCOLOR_CHOCOLATE:
+                                case SKINCOLOR_KHAKI:
 					cstart = "\x8e"; // V_BROWNMAP
 					break;
 				case SKINCOLOR_FAIRY:
@@ -814,6 +825,10 @@ static void Got_Saycmd(UINT8 **p, INT32 playernum)
 				case SKINCOLOR_LEMONADE:
 				case SKINCOLOR_BUBBLEGUM:
 				case SKINCOLOR_LILAC:
+                                case SKINCOLOR_CORAL:
+                                case SKINCOLOR_PEARL:
+                                case SKINCOLOR_ANGEL:
+                                case SKINCOLOR_NEOPOLITAN:
 					cstart = "\x8d"; // V_PINKMAP
 					break;
 				case SKINCOLOR_CINNAMON:
@@ -826,6 +841,18 @@ static void Got_Saycmd(UINT8 **p, INT32 playernum)
 				case SKINCOLOR_FLAME:
 				case SKINCOLOR_SCARLET:
 				case SKINCOLOR_KETCHUP:
+                                case SKINCOLOR_WATERMELON:
+                                case SKINCOLOR_SODA:
+                                case SKINCOLOR_HOTDOG:
+                                case SKINCOLOR_GRAPEFRUIT:
+                                case SKINCOLOR_VOLCANO:
+                                case SKINCOLOR_PLUMBER:
+                                case SKINCOLOR_FESTIVE:
+                                case SKINCOLOR_BLOODCELL:
+                                case SKINCOLOR_MAHOGANY:
+                                case SKINCOLOR_MERIDAN:
+                                case SKINCOLOR_DRAGON:
+                                case SKINCOLOR_GOTHIC:
 					cstart = "\x85"; // V_REDMAP
 					break;
 				case SKINCOLOR_DAWN:
@@ -836,11 +863,22 @@ static void Got_Saycmd(UINT8 **p, INT32 playernum)
 				case SKINCOLOR_ROSEWOOD:
 				case SKINCOLOR_BURGUNDY:
 				case SKINCOLOR_TANGERINE:
+                                case SKINCOLOR_SAFFRON:
+                                case SKINCOLOR_CARROT:
+                                case SKINCOLOR_EXOTIC:
+                                case SKINCOLOR_LOWBIT:
+                                case SKINCOLOR_TIGER:
+                                case SKINCOLOR_RUSTIC:
+                                case SKINCOLOR_PARADISE:
 					cstart = "\x87"; // V_ORANGEMAP
 					break;
 				case SKINCOLOR_PEACH:
 				case SKINCOLOR_CARAMEL:
 				case SKINCOLOR_CREAM:
+                                case SKINCOLOR_SAND:
+                                case SKINCOLOR_HONEYDEW:
+                                case SKINCOLOR_BEACH:
+                                case SKINCOLOR_IVORY:
 					cstart = "\x8f"; // V_PEACHMAP
 					break;
 				case SKINCOLOR_GOLD:
@@ -848,6 +886,8 @@ static void Got_Saycmd(UINT8 **p, INT32 playernum)
 				case SKINCOLOR_BRONZE:
 				case SKINCOLOR_COPPER:
 				case SKINCOLOR_THUNDER:
+                                case SKINCOLOR_BRASS:
+                                case SKINCOLOR_KING:
 					cstart = "\x8A"; // V_GOLDMAP
 					break;
 				case SKINCOLOR_POPCORN:
@@ -856,6 +896,12 @@ static void Got_Saycmd(UINT8 **p, INT32 playernum)
 				case SKINCOLOR_MUSTARD:
 				case SKINCOLOR_CROCODILE:
 				case SKINCOLOR_OLIVE:
+                                case SKINCOLOR_BANANA:
+                                case SKINCOLOR_CHEETAH:
+                                case SKINCOLOR_LEMON:
+                                case SKINCOLOR_MOSHPIT:
+                                case SKINCOLOR_TROPICAL:
+                                case SKINCOLOR_MAYONNAISE:
 					cstart = "\x82"; // V_YELLOWMAP
 					break;
 				case SKINCOLOR_ARTICHOKE:
@@ -863,6 +909,9 @@ static void Got_Saycmd(UINT8 **p, INT32 playernum)
 				case SKINCOLOR_GARDEN:
 				case SKINCOLOR_TEA:
 				case SKINCOLOR_PISTACHIO:
+                                case SKINCOLOR_LEEK:
+                                case SKINCOLOR_BIOLUMINESCENT:
+                                case SKINCOLOR_PEPPERMINT:
 					cstart = "\x8b"; // V_TEAMAP
 					break;
 				case SKINCOLOR_LIME:
@@ -878,6 +927,20 @@ static void Got_Saycmd(UINT8 **p, INT32 playernum)
 				case SKINCOLOR_DREAM:
 				case SKINCOLOR_PLAGUE:
 				case SKINCOLOR_ALGAE:
+                                case SKINCOLOR_NUCLEAR:
+                                case SKINCOLOR_RADIOACTIVE:
+                                case SKINCOLOR_ARCHER:
+                                case SKINCOLOR_ATOMIC:
+                                case SKINCOLOR_FOREST:
+                                case SKINCOLOR_PUNK:
+                                case SKINCOLOR_JUNGLE:
+                                case SKINCOLOR_ASHURA:
+                                case SKINCOLOR_ACID:
+                                case SKINCOLOR_SHAMROCK:
+                                case SKINCOLOR_MASTER:
+                                case SKINCOLOR_CHARTREUSE:
+                                case SKINCOLOR_AVENTURINE:
+                                case SKINCOLOR_JADE:
 					cstart = "\x83"; // V_GREENMAP
 					break;
 				case SKINCOLOR_CARIBBEAN:
@@ -889,22 +952,62 @@ static void Got_Saycmd(UINT8 **p, INT32 playernum)
 				case SKINCOLOR_CERULEAN:
 				case SKINCOLOR_NAVY:
 				case SKINCOLOR_SAPPHIRE:
+                                case SKINCOLOR_FREEZE:
+                                case SKINCOLOR_TURQUOISE:
+                                case SKINCOLOR_SPEARMINT:
+                                case SKINCOLOR_GROTTO:
+                                case SKINCOLOR_SUNFIRE:
+                                case SKINCOLOR_ROBIN:
+                                case SKINCOLOR_COTTONCANDY:
+                                case SKINCOLOR_LAPIS:
+                                case SKINCOLOR_ICE:
+                                case SKINCOLOR_AVIATOR:
+                                case SKINCOLOR_MURPLE:
 					cstart = "\x88"; // V_SKYMAP
 					break;
 				case SKINCOLOR_PIGEON:
 				case SKINCOLOR_PLATINUM:
 				case SKINCOLOR_STEEL:
+                                case SKINCOLOR_PEWTER:
+                                case SKINCOLOR_ORCA:
+                                case SKINCOLOR_PANTHER:
+                                case SKINCOLOR_ABYSS:
+                                case SKINCOLOR_BISMUTH:
 					cstart = "\x8c"; // V_STEELMAP
 					break;
 				case SKINCOLOR_PERIWINKLE:
 				case SKINCOLOR_BLUE:
 				case SKINCOLOR_BLUEBERRY:
 				case SKINCOLOR_NOVA:
+                                case SKINCOLOR_AMERICA:
+                                case SKINCOLOR_MIDNIGHT:
+                                case SKINCOLOR_STORM:
+                                case SKINCOLOR_LUNAR:
+                                case SKINCOLOR_ULTRAMARINE:
+                                case SKINCOLOR_SEARED:
+                                case SKINCOLOR_CONTAMINATION:
+                                case SKINCOLOR_TWILIGHT:
+                                case SKINCOLOR_ADMIRAL:
+                                case SKINCOLOR_SACRAMENTO:
+                                case SKINCOLOR_SPECTRUM:
 					cstart = "\x84"; // V_BLUEMAP
 					break;
 				case SKINCOLOR_ULTRAVIOLET:
 				case SKINCOLOR_PURPLE:
 				case SKINCOLOR_FUCHSIA:
+                                case SKINCOLOR_AMETHYST:
+                                case SKINCOLOR_CYBER:
+                                case SKINCOLOR_ORCHID:
+                                case SKINCOLOR_GRAPE:
+                                case SKINCOLOR_NIGHTSHADE:
+                                case SKINCOLOR_MAGENTA:
+                                case SKINCOLOR_WINE:
+                                case SKINCOLOR_GARLIC:
+                                case SKINCOLOR_VIOLET:
+                                case SKINCOLOR_BOYSENBERRY:
+                                case SKINCOLOR_MULBERRY:
+                                case SKINCOLOR_GALAXY:
+                                case SKINCOLOR_SOPRANO:
 					cstart = "\x81"; // V_PURPLEMAP
 					break;
 				case SKINCOLOR_PASTEL:
@@ -915,6 +1018,13 @@ static void Got_Saycmd(UINT8 **p, INT32 playernum)
 				case SKINCOLOR_LAVENDER:
 				case SKINCOLOR_BYZANTIUM:
 				case SKINCOLOR_POMEGRANATE:
+                                case SKINCOLOR_AFTERNOON:
+                                case SKINCOLOR_INDIGO:
+                                case SKINCOLOR_PLUM:
+                                case SKINCOLOR_BLACKBERRY:
+                                case SKINCOLOR_THISTLE:
+                                case SKINCOLOR_FOG:
+                                case SKINCOLOR_FANDANGO:
 					cstart = "\x89"; // V_LAVENDERMAP
 					break;
 				default:
