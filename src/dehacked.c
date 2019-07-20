@@ -8275,6 +8275,7 @@ static const char *COLOR_ENUMS[] = { // Rejigged for Kart.
         "ARCHER",               // SKINCOLOR_ARCHER
         "PEPPERMINT",           // SKINCOLOR_PEPPERMINT
 	"MINT",			// SKINCOLOR_MINT
+        "EVERGREEN",            // SKINCOLOR_EVERGREEN
 	"GREEN",		// SKINCOLOR_GREEN
         "ASHURA",               // SKINCOLOR_ASHURA
 	"PINETREE",		// SKINCOLOR_PINETREE
@@ -8311,6 +8312,7 @@ static const char *COLOR_ENUMS[] = { // Rejigged for Kart.
 	"JAWZ",			// SKINCOLOR_JAWZ
 	"CERULEAN",		// SKINCOLOR_CERULEAN
 	"NAVY",			// SKINCOLOR_NAVY
+        "DEEPDIVE",             // SKINCOLOR_DEEPDIVE
         "DAMP",                 // SKINCOLOR_DAMP
         "DIANNE",               // SKINCOLOR_DIANNE
         "ICE",                  // SKINCOLOR_ICE

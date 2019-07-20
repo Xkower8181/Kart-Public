@@ -957,6 +957,7 @@ static void Got_Saycmd(UINT8 **p, INT32 playernum)
                                 case SKINCOLOR_JADE:
                                 case SKINCOLOR_PARADISO:
                                 case SKINCOLOR_PATINA:
+                                case SKINCOLOR_EVERGREEN:
 					cstart = "\x83"; // V_GREENMAP
 					break;
 				case SKINCOLOR_CARIBBEAN:
@@ -1011,6 +1012,7 @@ static void Got_Saycmd(UINT8 **p, INT32 playernum)
                                 case SKINCOLOR_SACRAMENTO:
                                 case SKINCOLOR_SPECTRUM:
                                 case SKINCOLOR_VACATION:
+                                case SKINCOLOR_DEEPDIVE:
 					cstart = "\x84"; // V_BLUEMAP
 					break;
 				case SKINCOLOR_ULTRAVIOLET:
