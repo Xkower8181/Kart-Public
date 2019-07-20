@@ -8155,100 +8155,237 @@ static const char *COLOR_ENUMS[] = { // Rejigged for Kart.
 	"GREY",			// SKINCOLOR_GREY
 	"NICKEL",		// SKINCOLOR_NICKEL
 	"BLACK",		// SKINCOLOR_BLACK
+        "INKBLOT",              // SKINCOLOR_INKBLOT
+        "CHARCOAL",             // SKINCOLOR_CHARCOAL
+        "RAVEN",                // SKINCOLOR_RAVEN
+        "CROW",                 // SKINCOLOR_CROW
+        "DOOM",                 // SKINCOLOR_DOOM
 	"SKUNK",		// SKINCOLOR_SKUNK
+        "PEWTER",               // SKINCOLOR_PEWTER
+        "LEEK",                 // SKINCOLOR_LEEK
+        "GARLIC",               // SKINCOLOR_GARLIC
+        "MAYONNAISE",           // SKINCOLOR_MAYONNAISE
 	"FAIRY",		// SKINCOLOR_FAIRY
 	"POPCORN",		// SKINCOLOR_POPCORN
-	"ARTICHOKE",	// SKINCOLOR_ARTICHOKE
+        "NUCLEAR",              // SKINCOLOR_NUCLEAR
+	"ARTICHOKE",	        // SKINCOLOR_ARTICHOKE
 	"PIGEON",		// SKINCOLOR_PIGEON
+        "FREEZE",               // SKINCOLOR_FREEZE
 	"SEPIA",		// SKINCOLOR_SEPIA
+        "IVORY",                // SKINCOLOR_IVORY 
 	"BEIGE",		// SKINCOLOR_BEIGE
+        "LANDFROST",            // SKINCOLOR_LANDFROST
 	"WALNUT",		// SKINCOLOR_WALNUT
+        "FOUNDATION",           // SKINCOLOR_FOUNDATION
+        "MUD",                  // SKINCOLOR_MUD
+        "CHOCOLATE",            // SKINCOLOR_CHOCOLATE
+        "SAND",                 // SKINCOLOR_SAND
+        "SUNTAN",               // SKINCOLOR_SUNTAN
 	"BROWN",		// SKINCOLOR_BROWN
+        "PATTY",                // SKINCOLOR_SUNTAN
 	"LEATHER",		// SKINCOLOR_LEATHER
+        "FANDANGO",             // SKINCOLOR_FANDANGO
+        "PLUMBER",              // SKINCOLOR_PLUMBER
+        "SPECTRUM",             // SKINCOLOR_SPECTRUM
+        "AMERICA",              // SKINCOLOR_AMERICA
 	"SALMON",		// SKINCOLOR_SALMON
+        "PEARL",                // SKINCOLOR_PEARL
 	"PINK",			// SKINCOLOR_PINK
+        "CORAL",                // SKINCOLOR_CORAL
+        "CARNATION",            // SKINCOLOR_CARNATION
 	"ROSE",			// SKINCOLOR_ROSE
 	"BRICK",		// SKINCOLOR_BRICK
+        "BLOODCELL",            // SKINCOLOR_BLOODCELL
 	"CINNAMON",		// SKINCOLOR_CINNAMON
+        "HALLOWEEN",            // SKINCOLOR_HALLOWEEN
 	"RUBY",			// SKINCOLOR_RUBY
-	"RASPBERRY",	// SKINCOLOR_RASPBERRY
+	"RASPBERRY",	        // SKINCOLOR_RASPBERRY
+        "STRAWBERRY",           // SKINCOLOR_STRAWBERRY
 	"CHERRY",		// SKINCOLOR_CHERRY
+        "MERIDAN",              // SKINCOLOR_MERIDAN
+        "KOI",                  // SKINCOLOR_KOI
+        "SODA",                 // SKINCOLOR_SODA
 	"RED",			// SKINCOLOR_RED
 	"CRIMSON",		// SKINCOLOR_CRIMSON
+        "DISCO",                // SKINCOLOR_DISCO
+        "MAHOGANY",             // SKINCOLOR_MAHOGANY
 	"MAROON",		// SKINCOLOR_MAROON
+        "ASH",                  // SKINCOLOR_ASH
+        "DRAGON",               // SKINCOLOR_DRAGON
+        "FESTIVE",              // SKINCOLOR_FESTIVE
+        "WATERMELON",           // SKINCOLOR_WATERMELON
+        "AFTERNOON",            // SKINCOLOR_AFTERNOON
+        "LOWBIT",               // SKINCOLOR_LOWBIT
+        "DRAGONFRUIT",          // SKINCOLOR_DRAGONFRUIT
+        "GRAPEFRUIT",           // SKINCOLOR_GRAPEFRUIT
 	"LEMONADE",		// SKINCOLOR_LEMONADE
 	"FLAME",		// SKINCOLOR_FLAME
 	"SCARLET",		// SKINCOLOR_SCARLET
 	"KETCHUP",		// SKINCOLOR_KETCHUP
+        "HOTDOG",               // SKINCOLOR_HOTDOG
 	"DAWN",			// SKINCOLOR_DAWN
+        "SAFFRON",              // SKINCOLOR_SAFFRON
+        "MIAMI",                // SKINCOLOR_MIAMI
 	"SUNSET",		// SKINCOLOR_SUNSET
-	"CREAMSICLE",	// SKINCOLOR_CREAMSICLE
+	"CREAMSICLE",	        // SKINCOLOR_CREAMSICLE
 	"ORANGE",		// SKINCOLOR_ORANGE
+        "TIGER",                // SKINCOLOR_TIGER
 	"PUMPKIN",		// SKINCOLOR_PUMPKIN
+        "AMBER",                // SKINCOLOR_AMBER
 	"ROSEWOOD",		// SKINCOLOR_ROSEWOOD
 	"BURGUNDY",		// SKINCOLOR_BURGUNDY
-	"TANGERINE",	// SKINCOLOR_TANGERINE
+        "RUSTIC",               // SKINCOLOR_RUSTIC
+        "VOLCANO",              // SKINCOLOR_VOLCANO
+        "STEAMPUNK",            // SKINCOLOR_STEAMPUNK
+        "CARROT",               // SKINCOLOR_CARROT
+	"TANGERINE",	        // SKINCOLOR_TANGERINE
+        "NEOPOLITAN",           // SKINCOLOR_NEOPOLITAN
 	"PEACH",		// SKINCOLOR_PEACH
 	"CARAMEL",		// SKINCOLOR_CARAMEL
 	"CREAM",		// SKINCOLOR_CREAM
 	"GOLD",			// SKINCOLOR_GOLD
+        "BRASS",                // SKINCOLOR_BRASS
 	"ROYAL",		// SKINCOLOR_ROYAL
+        "KING",                 // SKINCOLOR_KING
 	"BRONZE",		// SKINCOLOR_BRONZE
 	"COPPER",		// SKINCOLOR_COPPER
 	"QUARRY",		// SKINCOLOR_QUARRY
+        "BANANA",               // SKINCOLOR_BANANA
 	"YELLOW",		// SKINCOLOR_YELLOW
 	"MUSTARD",		// SKINCOLOR_MUSTARD
-	"CROCODILE",	// SKINCOLOR_CROCODILE
+        "CHEETAH",              // SKINCOLOR_CHEETAH
+	"CROCODILE",	        // SKINCOLOR_CROCODILE
+        "LEMON",                // SKINCOLOR_LEMON
 	"OLIVE",		// SKINCOLOR_OLIVE
+        "KHAKI",                // SKINCOLOR_KHAKI
+        "MOSHPIT",              // SKINCOLOR_MOSHPIT
 	"VOMIT",		// SKINCOLOR_VOMIT
+        "AMBERT",               // SKINCOLOR_AMBERT 
+        "HONEYDEW",             // SKINCOLOR_HONEYDEW
 	"GARDEN",		// SKINCOLOR_GARDEN
 	"LIME",			// SKINCOLOR_LIME
+        "RADIOACTIVE",          // SKINCOLOR_RADIOACTIVE
 	"HANDHELD",		// SKINCOLOR_HANDHELD
 	"TEA",			// SKINCOLOR_TEA
-	"PISTACHIO",	// SKINCOLOR_PISTACHIO
+	"PISTACHIO",	        // SKINCOLOR_PISTACHIO
 	"MOSS",			// SKINCOLOR_MOSS
-	"CAMOUFLAGE",	// SKINCOLOR_CAMOUFLAGE
+        "PATINA",               // SKINCOLOR_PATINA
+	"CAMOUFLAGE",	        // SKINCOLOR_CAMOUFLAGE
 	"ROBOHOOD",		// SKINCOLOR_ROBOHOOD
+        "ARCHER",               // SKINCOLOR_ARCHER
+        "PEPPERMINT",           // SKINCOLOR_PEPPERMINT
 	"MINT",			// SKINCOLOR_MINT
 	"GREEN",		// SKINCOLOR_GREEN
+        "ASHURA",               // SKINCOLOR_ASHURA
 	"PINETREE",		// SKINCOLOR_PINETREE
-	"EMERALD",		// SKINCOLOR_EMERALD
+        "FOREST",               // SKINCOLOR_FOREST
+        "ATOMIC",               // SKINCOLOR_ATOMIC
+	"SHAMROCK",		// SKINCOLOR_SHAMROCK
+        "CHARTREUSE",           // SKINCOLOR_CHARTREUSE
+        "PUNK",                 // SKINCOLOR_PUNK
+        "JUNGLE",               // SKINCOLOR_JUNGLE
 	"SWAMP",		// SKINCOLOR_SWAMP
+	"EMERALD",		// SKINCOLOR_EMERALD
 	"DREAM",		// SKINCOLOR_DREAM
 	"PLAGUE",		// SKINCOLOR_PLAGUE
+        "PARADISO",             // SKINCOLOR_PARADISO
+        "AVENTURINE",           // SKINCOLOR_AVENTURINE
 	"ALGAE",		// SKINCOLOR_ALGAE
-	"CARIBBEAN",	// SKINCOLOR_CARIBBEAN
+        "JADE",                 // SKINCOLOR_JADE
+        "MASTER",               // SKINCOLOR_MASTER
+	"CARIBBEAN",	        // SKINCOLOR_CARIBBEAN
 	"AZURE",		// SKINCOLOR_AZURE
 	"AQUA",			// SKINCOLOR_AQUA
+        "AVIATOR",              // SKINCOLOR_AVIATOR
 	"TEAL",			// SKINCOLOR_TEAL
+        "SACRAMENTO",           // SKINCOLOR_SACRAMENTO
+        "TURQUOISE",            // SKINCOLOR_TURQUOISE
+        "SPEARMINT",            // SKINCOLOR_SPEARMINT
+        "GROTTO",               // SKINCOLOR_GROTTO
+        "FIREFLY",              // SKINCOLOR_FIREFLY
+        "SUNFIRE",              // SKINCOLOR_SUNFIRE
+        "ROBIN",                // SKINCOLOR_ROBIN
+        "BIOLUMINESCENT",       // SKINCOLOR_BIOLUMINESCENT
 	"CYAN",			// SKINCOLOR_CYAN
+        "GHOST",                // SKINCOLOR_GHOST
 	"JAWZ",			// SKINCOLOR_JAWZ
 	"CERULEAN",		// SKINCOLOR_CERULEAN
 	"NAVY",			// SKINCOLOR_NAVY
+        "DAMP",                 // SKINCOLOR_DAMP
+        "DIANNE",               // SKINCOLOR_DIANNE
+        "ICE",                  // SKINCOLOR_ICE
+        "SEARED",               // SKINCOLOR_SEARED
+        "CONTAMINATION",        // SKINCOLOR_CONTAMINATION
 	"PLATINUM",		// SKINCOLOR_PLATINUM
 	"SLATE",		// SKINCOLOR_SLATE
 	"STEEL",		// SKINCOLOR_STEEL
+        "BEACH",                // SKINCOLOR_BEACH
+        "ANGEL",                // SKINCOLOR_ANGEL
 	"THUNDER",		// SKINCOLOR_THUNDER
+        "GOTHIC",               // SKINCOLOR_GOTHIC
 	"RUST",			// SKINCOLOR_RUST
+        "BERMUDA",              // SKINCOLOR_BERMUDA
 	"WRISTWATCH",	// SKINCOLOR_WRISTWATCH
+        "LUNAR",                // SKINCOLOR_LUNAR
+        "PANTHER",              // SKINCOLOR_PANTHER
 	"JET",			// SKINCOLOR_JET
+        "ONYX",                 // SKINCOLOR_ONYX
+        "DENIM",                // SKINCOLOR_DENIM
+        "ABYSS",                // SKINCOLOR_ABYSS
+        "EXOTIC",               // SKINCOLOR_EXOTIC
+        "ULTRAMARINE",          // SKINCOLOR_ULTRAMARINE
+        "VACATION",             // SKINCOLOR_VACATION
 	"SAPPHIRE",		// SKINCOLOR_SAPPHIRE
+        "LAPIS",                // SKINCOLOR_LAPIS
+        "ORCA",                 // SKINCOLOR_ORCA
+        "STORM",                // SKINCOLOR_STORM
 	"PERIWINKLE",	// SKINCOLOR_PERIWINKLE
+        "MURPLE",               // SKINCOLOR_MURPLE
+        "TWILIGHT",             // SKINCOLOR_TWILIGHT
 	"BLUE",			// SKINCOLOR_BLUE
 	"BLUEBERRY",	// SKINCOLOR_BLUEBERRY
+        "MIDNIGHT",             // SKINCOLOR_MIDNIGHT
+        "ADMIRAL",              // SKINCOLOR_ADMIRAL
+        "ACID",                 // SKINCOLOR_ACID
+        "BISMUTH",              // SKINCOLOR_BISMUTH
 	"NOVA",			// SKINCOLOR_NOVA
 	"PASTEL",		// SKINCOLOR_PASTEL
+        "SOPRANO",              // SKINCOLOR_SOPRANO
+        "COTTONCANDY",          // SKINCOLOR_COTTONCANDY
+        "AMETHYST",             // SKINCOLOR_AMETHYST
 	"MOONSLAM",		// SKINCOLOR_MOONSLAM
+        "FOG",                  // SKINCOLOR_FOG
 	"ULTRAVIOLET",	// SKINCOLOR_ULTRAVIOLET
 	"DUSK",			// SKINCOLOR_DUSK
+        "VIOLET",               // SKINCOLOR_VIOLET
+        "INDIGO",               // SKINCOLOR_INDIGO
+        "CYBER",                // SKINCOLOR_CYBER
 	"BUBBLEGUM",	// SKINCOLOR_BUBBLEGUM
+        "UNICORN",              // SKINCOLOR_UNICORN
+        "ORCHID",               // SKINCOLOR_ORCHID
+        "GRAPE",                // SKINCOLOR_GRAPE
 	"PURPLE",		// SKINCOLOR_PURPLE
+        "PARADISE",             // SKINCOLOR_PARADISE
+        "TROPICAL",             // SKINCOLOR_TROPICAL
+        "GALAXY",               // SKINCOLOR_GALAXY
+        "PLUM",                 // SKINCOLOR_PLUM
+        "NIGHTSHADE",           // SKINCOLOR_NIGHTSHADE
+        "MAGENTA",              // SKINCOLOR_MAGENTA
 	"FUCHSIA",		// SKINCOLOR_FUCHSIA
+        "MULBERRY",             // SKINCOLOR_MULBERRY
+        "BOYSENBERRY",          // SKINCOLOR_BOYSENBERRY
+        "SPIDER",               // SKINCOLOR_SPIDER
 	"TOXIC",		// SKINCOLOR_TOXIC
 	"MAUVE",		// SKINCOLOR_MAUVE
 	"LAVENDER",		// SKINCOLOR_LAVENDER
+        "VOODOO",               // SKINCOLOR_VOODOO
+        "BLACKBERRY",           // SKINCOLOR_BLACKBERRY
+        "EGGPLANT",             // SKINCOLOR_EGGPLANT
 	"BYZANTIUM",	// SKINCOLOR_BYZANTIUM
+        "WINE",                 // SKINCOLOR_WINE
 	"POMEGRANATE",	// SKINCOLOR_POMEGRANATE
+        "PRELUDE",              // SKINCOLOR_PRELUDE
+        "THISTLE",              // SKINCOLOR_THISTLE
 	"LILAC",		// SKINCOLOR_LILAC
 
 	// Special super colors
