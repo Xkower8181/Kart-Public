@@ -8155,7 +8155,7 @@ static const char *COLOR_ENUMS[] = { // Rejigged for Kart.
 	"GREY",			// SKINCOLOR_GREY
 	"NICKEL",		// SKINCOLOR_NICKEL
 	"BLACK",		// SKINCOLOR_BLACK
-        "INKBLOT",              // SKINCOLOR_INKBLOT
+        "VANTABLACK",           // SKINCOLOR_VANTABLACK
         "CHARCOAL",             // SKINCOLOR_CHARCOAL
         "RAVEN",                // SKINCOLOR_RAVEN
         "CROW",                 // SKINCOLOR_CROW
@@ -8167,20 +8167,15 @@ static const char *COLOR_ENUMS[] = { // Rejigged for Kart.
         "MAYONNAISE",           // SKINCOLOR_MAYONNAISE
 	"FAIRY",		// SKINCOLOR_FAIRY
 	"POPCORN",		// SKINCOLOR_POPCORN
-        "NUCLEAR",              // SKINCOLOR_NUCLEAR
 	"ARTICHOKE",	        // SKINCOLOR_ARTICHOKE
 	"PIGEON",		// SKINCOLOR_PIGEON
-        "FREEZE",               // SKINCOLOR_FREEZE
-	"SEPIA",		// SKINCOLOR_SEPIA
-        "IVORY",                // SKINCOLOR_IVORY 
+	"SEPIA",		// SKINCOLOR_SEPIA 
 	"BEIGE",		// SKINCOLOR_BEIGE
         "LANDFROST",            // SKINCOLOR_LANDFROST
 	"WALNUT",		// SKINCOLOR_WALNUT
-        "FOUNDATION",           // SKINCOLOR_FOUNDATION
         "MUD",                  // SKINCOLOR_MUD
         "CHOCOLATE",            // SKINCOLOR_CHOCOLATE
         "SAND",                 // SKINCOLOR_SAND
-        "SUNTAN",               // SKINCOLOR_SUNTAN
 	"BROWN",		// SKINCOLOR_BROWN
         "PATTY",                // SKINCOLOR_SUNTAN
 	"LEATHER",		// SKINCOLOR_LEATHER
@@ -8277,7 +8272,7 @@ static const char *COLOR_ENUMS[] = { // Rejigged for Kart.
 	"MINT",			// SKINCOLOR_MINT
         "EVERGREEN",            // SKINCOLOR_EVERGREEN
 	"GREEN",		// SKINCOLOR_GREEN
-        "ASHURA",               // SKINCOLOR_ASHURA
+        "SULU",                 // SKINCOLOR_SULU
 	"PINETREE",		// SKINCOLOR_PINETREE
         "FOREST",               // SKINCOLOR_FOREST
         "ATOMIC",               // SKINCOLOR_ATOMIC
@@ -8293,7 +8288,6 @@ static const char *COLOR_ENUMS[] = { // Rejigged for Kart.
         "AVENTURINE",           // SKINCOLOR_AVENTURINE
 	"ALGAE",		// SKINCOLOR_ALGAE
         "JADE",                 // SKINCOLOR_JADE
-        "MASTER",               // SKINCOLOR_MASTER
 	"CARIBBEAN",	        // SKINCOLOR_CARIBBEAN
 	"AZURE",		// SKINCOLOR_AZURE
 	"AQUA",			// SKINCOLOR_AQUA
@@ -8305,11 +8299,13 @@ static const char *COLOR_ENUMS[] = { // Rejigged for Kart.
         "GROTTO",               // SKINCOLOR_GROTTO
         "FIREFLY",              // SKINCOLOR_FIREFLY
         "SUNFIRE",              // SKINCOLOR_SUNFIRE
+        "SEAFOAM",              // SKINCOLOR_SEAFOAM
         "ROBIN",                // SKINCOLOR_ROBIN
         "BIOLUMINESCENT",       // SKINCOLOR_BIOLUMINESCENT
 	"CYAN",			// SKINCOLOR_CYAN
         "GHOST",                // SKINCOLOR_GHOST
 	"JAWZ",			// SKINCOLOR_JAWZ
+        "FROST",                // SKINCOLOR_FROST
 	"CERULEAN",		// SKINCOLOR_CERULEAN
 	"NAVY",			// SKINCOLOR_NAVY
         "DEEPDIVE",             // SKINCOLOR_DEEPDIVE
@@ -8325,9 +8321,10 @@ static const char *COLOR_ENUMS[] = { // Rejigged for Kart.
         "ANGEL",                // SKINCOLOR_ANGEL
 	"THUNDER",		// SKINCOLOR_THUNDER
         "GOTHIC",               // SKINCOLOR_GOTHIC
+        "JASMINE",              // SKINCOLOR_JASMINE
 	"RUST",			// SKINCOLOR_RUST
         "BERMUDA",              // SKINCOLOR_BERMUDA
-	"WRISTWATCH",	// SKINCOLOR_WRISTWATCH
+	"WRISTWATCH",	        // SKINCOLOR_WRISTWATCH
         "LUNAR",                // SKINCOLOR_LUNAR
         "PANTHER",              // SKINCOLOR_PANTHER
 	"JET",			// SKINCOLOR_JET
@@ -8341,28 +8338,29 @@ static const char *COLOR_ENUMS[] = { // Rejigged for Kart.
         "LAPIS",                // SKINCOLOR_LAPIS
         "ORCA",                 // SKINCOLOR_ORCA
         "STORM",                // SKINCOLOR_STORM
-	"PERIWINKLE",	// SKINCOLOR_PERIWINKLE
+	"PERIWINKLE",	        // SKINCOLOR_PERIWINKLE
         "MURPLE",               // SKINCOLOR_MURPLE
         "TWILIGHT",             // SKINCOLOR_TWILIGHT
 	"BLUE",			// SKINCOLOR_BLUE
-	"BLUEBERRY",	// SKINCOLOR_BLUEBERRY
+	"BLUEBERRY",	        // SKINCOLOR_BLUEBERRY
         "MIDNIGHT",             // SKINCOLOR_MIDNIGHT
         "ADMIRAL",              // SKINCOLOR_ADMIRAL
         "ACID",                 // SKINCOLOR_ACID
-        "BISMUTH",              // SKINCOLOR_BISMUTH
 	"NOVA",			// SKINCOLOR_NOVA
 	"PASTEL",		// SKINCOLOR_PASTEL
         "SOPRANO",              // SKINCOLOR_SOPRANO
         "COTTONCANDY",          // SKINCOLOR_COTTONCANDY
         "AMETHYST",             // SKINCOLOR_AMETHYST
+        "MINSK",                // SKINCOLOR_MINSK
 	"MOONSLAM",		// SKINCOLOR_MOONSLAM
         "FOG",                  // SKINCOLOR_FOG
-	"ULTRAVIOLET",	// SKINCOLOR_ULTRAVIOLET
+	"ULTRAVIOLET",	        // SKINCOLOR_ULTRAVIOLET
 	"DUSK",			// SKINCOLOR_DUSK
         "VIOLET",               // SKINCOLOR_VIOLET
+        "HAZE",                 // SKINCOLOR_HAZE
         "INDIGO",               // SKINCOLOR_INDIGO
         "CYBER",                // SKINCOLOR_CYBER
-	"BUBBLEGUM",	// SKINCOLOR_BUBBLEGUM
+	"BUBBLEGUM",	        // SKINCOLOR_BUBBLEGUM
         "UNICORN",              // SKINCOLOR_UNICORN
         "ORCHID",               // SKINCOLOR_ORCHID
         "GRAPE",                // SKINCOLOR_GRAPE
@@ -8370,6 +8368,7 @@ static const char *COLOR_ENUMS[] = { // Rejigged for Kart.
         "PARADISE",             // SKINCOLOR_PARADISE
         "TROPICAL",             // SKINCOLOR_TROPICAL
         "GALAXY",               // SKINCOLOR_GALAXY
+        "VASTNESS",             // SKINCOLOR_VASTNESS
         "PLUM",                 // SKINCOLOR_PLUM
         "NIGHTSHADE",           // SKINCOLOR_NIGHTSHADE
         "MAGENTA",              // SKINCOLOR_MAGENTA
@@ -8383,9 +8382,9 @@ static const char *COLOR_ENUMS[] = { // Rejigged for Kart.
         "VOODOO",               // SKINCOLOR_VOODOO
         "BLACKBERRY",           // SKINCOLOR_BLACKBERRY
         "EGGPLANT",             // SKINCOLOR_EGGPLANT
-	"BYZANTIUM",	// SKINCOLOR_BYZANTIUM
+	"BYZANTIUM",	        // SKINCOLOR_BYZANTIUM
         "WINE",                 // SKINCOLOR_WINE
-	"POMEGRANATE",	// SKINCOLOR_POMEGRANATE
+	"POMEGRANATE",	        // SKINCOLOR_POMEGRANATE
         "PRELUDE",              // SKINCOLOR_PRELUDE
         "THISTLE",              // SKINCOLOR_THISTLE
 	"LILAC",		// SKINCOLOR_LILAC
