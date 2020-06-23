@@ -143,6 +143,8 @@ boolean advancedemo;
 INT32 debugload = 0;
 #endif
 
+char savegamename[256];
+
 #ifdef _arch_dreamcast
 char srb2home[256] = "/cd";
 char srb2path[256] = "/cd";
@@ -180,39 +182,11 @@ void D_PostEvent_end(void) {};
 #endif
 
 // modifier keys
+// Now handled in I_OsPolling
 UINT8 shiftdown = 0; // 0x1 left, 0x2 right
 UINT8 ctrldown = 0; // 0x1 left, 0x2 right
 UINT8 altdown = 0; // 0x1 left, 0x2 right
 boolean capslock = 0;	// gee i wonder what this does.
-//
-// D_ModifierKeyResponder
-// Sets global shift/ctrl/alt variables, never actually eats events
-//
-static inline void D_ModifierKeyResponder(event_t *ev)
-{
-	if (ev->type == ev_keydown || ev->type == ev_console) switch (ev->data1)
-	{
-		case KEY_LSHIFT: shiftdown |= 0x1; return;
-		case KEY_RSHIFT: shiftdown |= 0x2; return;
-		case KEY_LCTRL: ctrldown |= 0x1; return;
-		case KEY_RCTRL: ctrldown |= 0x2; return;
-		case KEY_LALT: altdown |= 0x1; return;
-		case KEY_RALT: altdown |= 0x2; return;
-		case KEY_CAPSLOCK: capslock = !capslock; return;
-
-		default: return;
-	}
-	else if (ev->type == ev_keyup) switch (ev->data1)
-	{
-		case KEY_LSHIFT: shiftdown &= ~0x1; return;
-		case KEY_RSHIFT: shiftdown &= ~0x2; return;
-		case KEY_LCTRL: ctrldown &= ~0x1; return;
-		case KEY_RCTRL: ctrldown &= ~0x2; return;
-		case KEY_LALT: altdown &= ~0x1; return;
-		case KEY_RALT: altdown &= ~0x2; return;
-		default: return;
-	}
-}
 
 //
 // D_ProcessEvents
@@ -226,15 +200,9 @@ void D_ProcessEvents(void)
 	{
 		ev = &events[eventtail];
 
-		// Set global shift/ctrl/alt down variables
-		D_ModifierKeyResponder(ev); // never eats events
-
 		// Screenshots over everything so that they can be taken anywhere.
 		if (M_ScreenshotResponder(ev))
 			continue; // ate the event
-
-		if (CL_Responder(ev))
-			continue;
 
 		if (gameaction == ga_nothing && gamestate == GS_TITLESCREEN)
 		{
@@ -251,6 +219,11 @@ void D_ProcessEvents(void)
 		// Menu input
 		if (M_Responder(ev))
 			continue; // menu ate the event
+
+		// Demo input:
+		if (demo.playback)
+			if (M_DemoResponder(ev))
+				continue;	// demo ate the event
 
 		// console input
 		if (CON_Responder(ev))
@@ -276,29 +249,29 @@ static void D_Display(void)
 	INT32 wipedefindex = 0;
 	UINT8 i;
 
-	if (dedicated)
-		return;
-
-	if (nodrawers)
-		return; // for comparative timing/profiling
-
-	// check for change of screen size (video mode)
-	if (setmodeneeded && !wipe)
-		SCR_SetMode(); // change video mode
-
-	if (vid.recalc)
-		SCR_Recalc(); // NOTE! setsizeneeded is set by SCR_Recalc()
-
-	// change the view size if needed
-	if (setsizeneeded)
+	if (!dedicated)
 	{
-		R_ExecuteSetViewSize();
-		forcerefresh = true; // force background redraw
-	}
+		if (nodrawers)
+			return; // for comparative timing/profiling
 
-	// draw buffered stuff to screen
-	// Used only by linux GGI version
-	I_UpdateNoBlit();
+		// check for change of screen size (video mode)
+		if (setmodeneeded && !wipe)
+			SCR_SetMode(); // change video mode
+
+		if (vid.recalc)
+			SCR_Recalc(); // NOTE! setsizeneeded is set by SCR_Recalc()
+
+		// change the view size if needed
+		if (setsizeneeded)
+		{
+			R_ExecuteSetViewSize();
+			forcerefresh = true; // force background redraw
+		}
+
+		// draw buffered stuff to screen
+		// Used only by linux GGI version
+		I_UpdateNoBlit();
+	}
 
 	// save the current screen if about to wipe
 	wipe = (gamestate != wipegamestate);
@@ -316,7 +289,7 @@ static void D_Display(void)
 				wipedefindex = wipe_multinter_toblack;
 		}
 
-		if (rendermode != render_none)
+		if (!dedicated)
 		{
 			// Fade to black first
 			if (gamestate != GS_LEVEL // fades to black on its own timing, always
@@ -336,7 +309,15 @@ static void D_Display(void)
 
 			F_WipeStartScreen();
 		}
+		else //dedicated servers
+		{
+			F_RunWipe(wipedefs[wipedefindex], gamestate != GS_TIMEATTACK);
+			wipegamestate = gamestate;
+		}
 	}
+
+	if (dedicated) //bail out after wipe logic
+		return;
 
 	// do buffered drawing
 	switch (gamestate)
@@ -447,7 +428,7 @@ static void D_Display(void)
 					{
 						if (i > 0) // Splitscreen-specific
 						{
-							switch (i) 
+							switch (i)
 							{
 								case 1:
 									if (splitscreen > 1)
@@ -475,7 +456,7 @@ static void D_Display(void)
 									break;
 							}
 
-							
+
 							topleft = screens[0] + viewwindowy*vid.width + viewwindowx;
 						}
 
@@ -612,9 +593,6 @@ void D_SRB2Loop(void)
 		server = true;
 
 	// Pushing of + parameters is now done back in D_SRB2Main, not here.
-
-	CONS_Printf("I_StartupKeyboard()...\n");
-	I_StartupKeyboard();
 
 #ifdef _WINDOWS
 	CONS_Printf("I_StartupMouse()...\n");
@@ -1300,6 +1278,14 @@ void D_SRB2Main(void)
 
 	CONS_Printf("I_StartupGraphics()...\n");
 	I_StartupGraphics();
+
+#ifdef HWRENDER
+	if (rendermode == render_opengl)
+	{
+		for (i = 0; i < numwadfiles; i++)
+			HWR_LoadShaders(i, (wadfiles[i]->type == RET_PK3));
+	}
+#endif
 
 	//--------------------------------------------------------- CONSOLE
 	// setup loading screen
