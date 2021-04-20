@@ -46,7 +46,10 @@
 //#define SHITPLANESPARENCY
 
 //SoM: 3/23/2000: Use Boom visplane hashing.
-#define MAXVISPLANES 512
+#define VISPLANEHASHBITS 9
+#define VISPLANEHASHMASK ((1<<VISPLANEHASHBITS)-1)
+// the last visplane list is outside of the hash table and is used for fof planes
+#define MAXVISPLANES ((1<<VISPLANEHASHBITS)+1)
 
 static visplane_t *visplanes[MAXVISPLANES];
 static visplane_t *freetail;
@@ -61,7 +64,7 @@ INT32 numffloors;
 
 //SoM: 3/23/2000: Boom visplane hashing routine.
 #define visplane_hash(picnum,lightlevel,height) \
-  ((unsigned)((picnum)*3+(lightlevel)+(height)*7) & (MAXVISPLANES-1))
+  ((unsigned)((picnum)*3+(lightlevel)+(height)*7) & VISPLANEHASHMASK)
 
 //SoM: 3/23/2000: Use boom opening limit removal
 size_t maxopenings;
@@ -322,11 +325,9 @@ void R_MapPlane(INT32 y, INT32 x1, INT32 x2)
 	if (pindex >= MAXLIGHTZ)
 		pindex = MAXLIGHTZ - 1;
 
-#ifdef ESLOPE
 	if (currentplane->slope)
 		ds_colormap = colormaps;
 	else
-#endif
 	ds_colormap = planezlight[pindex];
 	if (encoremap && !currentplane->noencore)
 		ds_colormap += (256*32);
@@ -402,7 +403,7 @@ static visplane_t *new_visplane(unsigned hash)
 	visplane_t *check = freetail;
 	if (!check)
 	{
-		check = calloc(2, sizeof (*check));
+		check = calloc(1, sizeof (*check));
 		if (check == NULL) I_Error("%s: Out of memory", "new_visplane"); // FIXME: ugly
 	}
 	else
@@ -424,20 +425,14 @@ static visplane_t *new_visplane(unsigned hash)
 visplane_t *R_FindPlane(fixed_t height, INT32 picnum, INT32 lightlevel,
 	fixed_t xoff, fixed_t yoff, angle_t plangle, extracolormap_t *planecolormap,
 	ffloor_t *pfloor
-#ifdef POLYOBJECTS_PLANES
 			, polyobj_t *polyobj
-#endif
-#ifdef ESLOPE
 			, pslope_t *slope
-#endif
 			, boolean noencore)
 {
 	visplane_t *check;
 	unsigned hash;
 
-#ifdef ESLOPE
 	if (slope); else // Don't mess with this right now if a slope is involved
-#endif
 	{
 		xoff += viewx;
 		yoff -= viewy;
@@ -452,7 +447,6 @@ visplane_t *R_FindPlane(fixed_t height, INT32 picnum, INT32 lightlevel,
 		}
 	}
 
-#ifdef POLYOBJECTS_PLANES
 	if (polyobj)
 	{
 		if (polyobj->angle != 0)
@@ -467,7 +461,6 @@ visplane_t *R_FindPlane(fixed_t height, INT32 picnum, INT32 lightlevel,
 			yoff += polyobj->centerPt.y;
 		}
 	}
-#endif
 
 	// This appears to fix the Nimbus Ruins sky bug.
 	if (picnum == skyflatnum && pfloor)
@@ -476,32 +469,30 @@ visplane_t *R_FindPlane(fixed_t height, INT32 picnum, INT32 lightlevel,
 		lightlevel = 0;
 	}
 
-	// New visplane algorithm uses hash table
-	hash = visplane_hash(picnum, lightlevel, height);
-
-	for (check = visplanes[hash]; check; check = check->next)
+	if (!pfloor)
 	{
-#ifdef POLYOBJECTS_PLANES
-		if (check->polyobj && pfloor)
-			continue;
-		if (polyobj != check->polyobj)
-			continue;
-#endif
-		if (height == check->height && picnum == check->picnum
-			&& lightlevel == check->lightlevel
-			&& xoff == check->xoffs && yoff == check->yoffs
-			&& planecolormap == check->extra_colormap
-			&& !pfloor && !check->ffloor
-			&& check->viewx == viewx && check->viewy == viewy && check->viewz == viewz
-			&& check->viewangle == viewangle
-			&& check->plangle == plangle
-#ifdef ESLOPE
-			&& check->slope == slope
-#endif
-			&& check->noencore == noencore)
+		hash = visplane_hash(picnum, lightlevel, height);
+		for (check = visplanes[hash]; check; check = check->next)
 		{
-			return check;
+			if (polyobj != check->polyobj)
+				continue;
+			if (height == check->height && picnum == check->picnum
+				&& lightlevel == check->lightlevel
+				&& xoff == check->xoffs && yoff == check->yoffs
+				&& planecolormap == check->extra_colormap
+				&& check->viewx == viewx && check->viewy == viewy && check->viewz == viewz
+				&& check->viewangle == viewangle
+				&& check->plangle == plangle
+				&& check->slope == slope
+				&& check->noencore == noencore)
+			{
+				return check;
+			}
 		}
+	}
+	else
+	{
+		hash = MAXVISPLANES - 1;
 	}
 
 	check = new_visplane(hash);
@@ -520,12 +511,8 @@ visplane_t *R_FindPlane(fixed_t height, INT32 picnum, INT32 lightlevel,
 	check->viewz = viewz;
 	check->viewangle = viewangle;
 	check->plangle = plangle;
-#ifdef POLYOBJECTS_PLANES
 	check->polyobj = polyobj;
-#endif
-#ifdef ESLOPE
 	check->slope = slope;
-#endif
 	check->noencore = noencore;
 
 	memset(check->top, 0xff, sizeof (check->top));
@@ -577,9 +564,17 @@ visplane_t *R_CheckPlane(visplane_t *pl, INT32 start, INT32 stop)
 	}
 	else /* Cannot use existing plane; create a new one */
 	{
-		unsigned hash =
-			visplane_hash(pl->picnum, pl->lightlevel, pl->height);
-		visplane_t *new_pl = new_visplane(hash);
+		visplane_t *new_pl;
+		if (pl->ffloor)
+		{
+			new_pl = new_visplane(MAXVISPLANES - 1);
+		}
+		else
+		{
+			unsigned hash =
+				visplane_hash(pl->picnum, pl->lightlevel, pl->height);
+			new_pl = new_visplane(hash);
+		}
 
 		new_pl->height = pl->height;
 		new_pl->picnum = pl->picnum;
@@ -593,12 +588,8 @@ visplane_t *R_CheckPlane(visplane_t *pl, INT32 start, INT32 stop)
 		new_pl->viewz = pl->viewz;
 		new_pl->viewangle = pl->viewangle;
 		new_pl->plangle = pl->plangle;
-#ifdef POLYOBJECTS_PLANES
 		new_pl->polyobj = pl->polyobj;
-#endif
-#ifdef ESLOPE
 		new_pl->slope = pl->slope;
-#endif
 		new_pl->noencore = pl->noencore;
 		pl = new_pl;
 		pl->minx = start;
@@ -623,11 +614,9 @@ void R_ExpandPlane(visplane_t *pl, INT32 start, INT32 stop)
 	INT32 unionl, unionh;
 //	INT32 x;
 
-#ifdef POLYOBJECTS_PLANES
 	// Don't expand polyobject planes here - we do that on our own.
 	if (pl->polyobj)
 		return;
-#endif
 
 	if (start < pl->minx)
 	{
@@ -742,9 +731,7 @@ void R_DrawPlanes(void)
 			}
 
 			if (pl->ffloor != NULL
-#ifdef POLYOBJECTS_PLANES
 			|| pl->polyobj != NULL
-#endif
 			)
 				continue;
 
@@ -773,7 +760,6 @@ void R_DrawSinglePlane(visplane_t *pl)
 #endif
 	spanfunc = basespanfunc;
 
-#ifdef POLYOBJECTS_PLANES
 	if (pl->polyobj && pl->polyobj->translucency != 0) {
 		spanfunc = R_DrawTranslucentSpan_8;
 
@@ -795,7 +781,6 @@ void R_DrawSinglePlane(visplane_t *pl)
 			light = LIGHTLEVELS-1;
 
 	} else
-#endif
 	if (pl->ffloor)
 	{
 		// Don't draw planes that shouldn't be drawn.
@@ -861,9 +846,7 @@ void R_DrawSinglePlane(visplane_t *pl)
 
 #ifndef NOWATER
 		if (pl->ffloor->flags & FF_RIPPLE
-#ifdef ESLOPE
 				&& !pl->slope
-#endif
 			)
 		{
 			INT32 top, bottom;
@@ -902,9 +885,7 @@ void R_DrawSinglePlane(visplane_t *pl)
 	}
 	else light = (pl->lightlevel >> LIGHTSEGSHIFT);
 
-#ifdef ESLOPE
 	if (!pl->slope) // Don't mess with angle on slopes! We'll handle this ourselves later
-#endif
 	if (viewangle != pl->viewangle+pl->plangle)
 	{
 		memset(cachedheight, 0, sizeof (cachedheight));
@@ -978,7 +959,6 @@ void R_DrawSinglePlane(visplane_t *pl)
 	if (light < 0)
 		light = 0;
 
-#ifdef ESLOPE
 	if (pl->slope) {
 		// Potentially override other stuff for now cus we're mean. :< But draw a slope plane!
 		// I copied ZDoom's code and adapted it to SRB2... -fickle
@@ -1118,7 +1098,6 @@ void R_DrawSinglePlane(visplane_t *pl)
 
 		planezlight = scalelight[light];
 	} else
-#endif // ESLOPE
 
 	planezlight = zlight[light];
 
